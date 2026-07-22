@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaik Ayan — Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#fbfaf8;
+    --ink:#14110f;
+    --ink-soft:#5b5650;
+    --line:#ece7e0;
+    --accent:#ff6a1a;
+    --accent-soft:#fff1e8;
+    --accent-deep:#c94e0c;
+    --radius:20px;
+    --maxw:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:#fff;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+
+  /* scroll progress */
+  #progress{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:999;width:0%;transition:width .1s;}
+
+  /* nav */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:900;
+    padding:22px 0;transition:.4s ease;
+  }
+  nav.scrolled{
+    padding:14px 0;background:rgba(255,255,255,.75);
+    backdrop-filter:blur(16px);border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .brand{font-weight:700;font-size:19px;letter-spacing:-0.02em;display:flex;align-items:center;gap:10px;}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  .navlinks{display:flex;gap:36px;font-size:14.5px;font-weight:500;}
+  .navlinks a{position:relative;color:var(--ink-soft);transition:.25s;}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a::after{
+    content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);
+    transition:width .25s ease;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .navlinks a.active{color:var(--ink);}
+  .navlinks a.active::after{width:100%;}
+  .burger{display:none;font-size:22px;cursor:pointer;background:none;border:none;}
+
+  @media(max-width:820px){
+    .navlinks{
+      position:fixed;top:0;right:-100%;height:100vh;width:70%;background:#fff;
+      flex-direction:column;justify-content:center;align-items:flex-start;
+      padding:40px;gap:28px;transition:right .35s ease;box-shadow:-10px 0 40px rgba(0,0,0,.08);
+    }
+    .navlinks.open{right:0;}
+    .burger{display:block;z-index:950;}
+  }
+
+  /* hero */
+  header.hero{
+    min-height:100vh;display:flex;align-items:center;position:relative;
+    padding-top:100px;overflow:hidden;
+  }
+  .blob{
+    position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;z-index:0;
+    background:radial-gradient(circle at 30% 30%, var(--accent), transparent 70%);
+    animation:float 14s ease-in-out infinite;
+  }
+  .blob.b1{width:420px;height:420px;top:-120px;right:-100px;}
+  .blob.b2{width:300px;height:300px;bottom:-80px;left:-60px;animation-delay:3s;opacity:.2;}
+  @keyframes float{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(-30px,30px) scale(1.08);}
+  }
+  .hero-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center;position:relative;z-index:1;width:100%;}
+  .hero-photo-wrap{align-self:end;}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;text-align:center;}}
+  .hero-photo-wrap{order:1;}
+  .hero-text{order:0;}
+  /* @media(max-width:900px){.hero-photo-wrap{order:-1;}} */
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;color:var(--accent-deep);background:var(--accent-soft);
+    padding:7px 14px;border-radius:999px;margin-bottom:22px;letter-spacing:.03em;
+  }
+  .eyebrow span.pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.6s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,106,26,.5);}70%{box-shadow:0 0 0 8px rgba(255,106,26,0);}100%{box-shadow:0 0 0 0 rgba(255,106,26,0);}}
+  h1.name{
+    font-size:clamp(42px,6vw,72px);font-weight:800;line-height:1.03;letter-spacing:-0.03em;
+  }
+  h1.name .accent{color:var(--accent);}
+  .typing-line{
+    font-family:'JetBrains Mono',monospace;font-size:clamp(15px,2vw,19px);color:var(--ink-soft);
+    margin:20px 0 22px;min-height:28px;
+  }
+  .typing-line .cursor{display:inline-block;width:2px;background:var(--accent);margin-left:2px;animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+  .hero-desc{max-width:520px;color:var(--ink-soft);font-size:16px;line-height:1.7;margin-bottom:34px;}
+  @media(max-width:900px){.hero-desc{margin-left:auto;margin-right:auto;}}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px;}
+  @media(max-width:900px){.cta-row{justify-content:center;}}
+  .btn{
+    padding:14px 26px;border-radius:14px;font-weight:600;font-size:14.5px;
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;border:none;
+    transition:.25s ease;position:relative;overflow:hidden;
+  }
+  .btn-primary{background:var(--ink);color:#fff;}
+  .btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);}
+  .btn-outline{background:#fff;color:var(--ink);border:1.5px solid var(--line);}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent-deep);transform:translateY(-2px);}
+  .socials{display:flex;gap:14px;}
+  @media(max-width:900px){.socials{justify-content:center;}}
+  .socials a{
+    width:42px;height:42px;border-radius:12px;border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:17px;transition:.25s;
+  }
+  .socials a:hover{border-color:var(--accent);color:var(--accent-deep);transform:translateY(-3px);}
+
+  /* .hero-photo-wrap{position:relative;display:flex;justify-content:center;align-items:flex-end;height:auto;} */
+  .hero-photo{
+  max-width:min(380px,100%);max-height:560px;object-fit:contain;object-position:bottom;
+  filter:grayscale(1) contrast(1.1) drop-shadow(0 30px 40px rgba(20,17,15,.22));
+  position:relative;z-index:1;
+  transition:filter .5s ease;
+}
+  .hero-photo-wrap:hover .hero-photo{
+  filter:grayscale(0) contrast(1.05) drop-shadow(0 30px 40px rgba(255,106,26,.25));
+  }
+  .photo-glow{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:380px;height:380px;z-index:0;
+  background-image:radial-gradient(var(--accent) 1.4px, transparent 1.4px);
+  background-size:16px 16px;
+  -webkit-mask-image:radial-gradient(circle, black 0%, transparent 70%);
+  mask-image:radial-gradient(circle, black 0%, transparent 70%);
+  opacity:.18;
+}
+  .photo-tag{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  background:#14110f;color:#fff;border-radius:10px;padding:9px 16px;
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  display:flex;align-items:center;gap:8px;white-space:nowrap;z-index:2;
+}
+  .photo-tag .blink{color:var(--accent);animation:blink 1s step-end infinite;}
+
+  /* section shared */
+  section{padding:110px 0;position:relative;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent-deep);
+    text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;display:block;
+  }
+  h2.title{font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-0.02em;margin-bottom:16px;}
+  .section-head{max-width:620px;margin-bottom:56px;}
+  .section-head p{color:var(--ink-soft);line-height:1.7;}
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;position:relative;z-index:2;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal-left{opacity:0;transform:translateX(-50px);transition:opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2;}
+  .reveal-left.in{opacity:1;transform:translateX(0);}
+  .reveal-right{opacity:0;transform:translateX(50px);transition:opacity .8s ease, transform .8s cubic-bezier(.22,1,.36,1);position:relative;z-index:2;}
+  .reveal-right.in{opacity:1;transform:translateX(0);}
+  .reveal-scale{opacity:0;transform:scale(.85);transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);position:relative;z-index:2;}
+  .reveal-scale.in{opacity:1;transform:scale(1);}
+  .reveal-flip{opacity:0;transform:rotateX(35deg) translateY(20px);transform-origin:top center;transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);position:relative;z-index:2;}
+  .reveal-flip.in{opacity:1;transform:rotateX(0) translateY(0);}
+  .stagger-child{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1);position:relative;z-index:2;}
+  .stagger-child.in{opacity:1;transform:translateY(0);}
+  @media(prefers-reduced-motion:reduce){
+    .reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-flip,.stagger-child{opacity:1!important;transform:none!important;}
+  }
+
+  .hero-in{
+    opacity:0;transform:translateY(24px);
+    animation:heroIn .8s cubic-bezier(.22,1,.36,1) forwards;
+    animation-delay:var(--d,0s);
+  }
+  @keyframes heroIn{to{opacity:1;transform:translateY(0);}}
+.hero-photo-wrap{position:relative;display:flex;justify-content:center;align-items:flex-end;height:520px;}
+  @media(prefers-reduced-motion:reduce){
+    .hero-in{animation:none;opacity:1;transform:none;}
+  }
+  #about{background:var(--bg-soft);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .about-text p{color:var(--ink-soft);line-height:1.85;font-size:15.5px;margin-bottom:16px;}
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px;}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 16px;text-align:center;}
+  .stat b{display:block;font-size:26px;color:var(--accent-deep);font-weight:800;}
+  .stat span{font-size:12.5px;color:var(--ink-soft);}
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:30px;}
+  .info-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dashed var(--line);font-size:14.5px;}
+  .info-row:last-child{border:none;}
+  .info-row span:first-child{color:var(--ink-soft);}
+  .info-row span:last-child{font-weight:600;}
+
+  /* skills */
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;}
+  .skill-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 16px;
+    transition:.3s ease;cursor:default;
+  }
+  .skill-card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 16px 30px -18px rgba(255,106,26,.4);}
+  .skill-card .sname{font-weight:600;font-size:14.5px;margin-bottom:10px;}
+  .bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden;}
+  .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-deep));width:0;border-radius:99px;transition:width 1.1s ease;}
+
+  /* projects */
+  #projects{background:var(--bg-soft);}
+  .proj-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+  .fbtn{
+    padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;
+    font-size:13.5px;font-weight:600;cursor:pointer;transition:.25s;color:var(--ink-soft);
+  }
+  .fbtn.active,.fbtn:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;}
+  .proj-card{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    display:flex;flex-direction:column;transition:.35s ease;
+  }
+  .proj-card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -25px rgba(20,17,15,.2);}
+  .proj-top{
+    height:150px;display:flex;align-items:center;justify-content:center;font-size:38px;
+    background:linear-gradient(135deg,var(--accent-soft),#fff);border-bottom:1px solid var(--line);
+    color:var(--accent-deep);
+  }
+  .proj-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .proj-body h3{font-size:18px;font-weight:700;}
+  .proj-body p{color:var(--ink-soft);font-size:14px;line-height:1.6;flex:1;}
+  .tech-badges{display:flex;flex-wrap:wrap;gap:6px;}
+  .badge{font-size:11.5px;font-family:'JetBrains Mono',monospace;background:var(--accent-soft);color:var(--accent-deep);padding:4px 10px;border-radius:999px;}
+  .proj-links{display:flex;gap:10px;margin-top:6px;}
+  .proj-links a{
+    flex:1;text-align:center;padding:10px;border-radius:10px;font-size:13px;font-weight:600;
+    border:1.5px solid var(--line);transition:.25s;
+  }
+  .proj-links a:hover{border-color:var(--accent);color:var(--accent-deep);}
+  .proj-links a.demo{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .proj-links a.demo:hover{background:var(--accent-deep);border-color:var(--accent-deep);color:#fff;}
+
+  /* timeline */
+  .timeline{position:relative;padding-left:32px;}
+  .timeline::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line);}
+  .t-item{position:relative;padding-bottom:38px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:'';position:absolute;left:-32px;top:4px;width:14px;height:14px;border-radius:50%;
+    background:var(--accent);border:3px solid var(--accent-soft);
+  }
+  .t-item .when{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent-deep);margin-bottom:6px;display:block;}
+  .t-item h3{font-size:17px;font-weight:700;margin-bottom:6px;}
+  .t-item p{color:var(--ink-soft);font-size:14.5px;line-height:1.65;}
+
+  /* certifications */
+  #certs{background:var(--bg-soft);}
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .cert-card{
+    background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;
+    display:flex;flex-direction:column;gap:10px;transition:.3s;
+  }
+  .cert-card:hover{border-color:var(--accent);transform:translateY(-4px);}
+  .cert-card .cicon{font-size:24px;}
+  .cert-card h4{font-size:15px;font-weight:700;}
+  .cert-card a{font-size:13px;color:var(--accent-deep);font-weight:600;}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+  .cform{display:flex;flex-direction:column;gap:14px;}
+  .cform input,.cform textarea{
+    padding:15px 16px;border-radius:12px;border:1.5px solid var(--line);font-family:inherit;
+    font-size:14.5px;background:#fff;transition:.25s;
+  }
+  .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--accent);}
+  .cform textarea{resize:vertical;min-height:120px;}
+  .contact-list{display:flex;flex-direction:column;gap:16px;}
+  .c-item{
+    display:flex;gap:16px;align-items:center;background:#fff;border:1px solid var(--line);
+    border-radius:16px;padding:18px 20px;transition:.25s;
+  }
+  .c-item:hover{border-color:var(--accent);}
+  .c-icon{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .c-item b{display:block;font-size:14px;}
+  .c-item span{font-size:12.5px;color:var(--ink-soft);}
+  .map-embed{border-radius:16px;overflow:hidden;border:1px solid var(--line);margin-top:20px;}
+  .map-embed iframe{width:100%;height:200px;border:0;display:block;}
+
+  footer{padding:40px 0;border-top:1px solid var(--line);}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  footer p{font-size:13.5px;color:var(--ink-soft);}
+
+  #toTop{
+    position:fixed;bottom:26px;right:26px;width:46px;height:46px;border-radius:50%;
+    background:var(--ink);color:#fff;border:none;font-size:18px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;
+    transition:.3s;z-index:800;
+  }
+  h1, h2, h3, h4, p, a, span, li, label, button, .badge, .tag {
+  position:relative;
+  z-index:2;
+}
+  .cursor-dot{
+  position:fixed;
+  top:0;left:0;
+  width:36px;height:36px;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:1;
+  transform:translate(-50%,-50%);
+  transition:width .2s ease, height .2s ease, background .15s ease, opacity .15s ease;
+  will-change:transform;
+  opacity:0;
+  background:transparent;
+}
+.cursor-dot.on-text{
+  opacity:1;
+  background:var(--accent);
+}
+.cursor-dot.on-accent{
+  opacity:1;
+  background:var(--ink);
+}
+</style>
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<div id="progress"></div>
+
+<nav id="navbar">
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span> Ayan.dev</div>
+    <button class="burger" id="burger">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#certs">Certifications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-photo-wrap">
+  <div class="photo-glow"></div>
+  <img class="hero-photo hero-in" style="--d:.05s" src="ayan_cutout.png" alt="Shaik Ayan" onerror="this.src='https://shaikayan13.github.io/portfoliio/WhatsApp%20Image%202026-05-17%20at%208.23.35%20PM.jpeg'; this.style.objectFit='cover'; this.style.borderRadius='24px';">
+  <div class="photo-tag hero-in" style="--d:.5s">&gt; whoami<span class="blink">_</span> Ayan · Bangalore, IN</div>
+</div>
+    <div class="hero-text">
+      <div class="eyebrow hero-in" style="--d:0s"><span class="pulse"></span> Open to Full Stack / SDE / AI-ML roles</div>
+      <h1 class="name hero-in" style="--d:.1s">Hi, I'm <span class="accent">Ayan.</span><br>I build things<br>for the web.</h1>
+      <div class="typing-line hero-in" style="--d:.2s" id="typeTarget"></div>
+      <p class="hero-desc hero-in" style="--d:.3s">Computer Science Engineering graduate from Bangalore, building full-stack web apps and AI/ML projects — from RAG chatbots to real-time systems — with clean code and a bias toward shipping.</p>
+      <div class="cta-row hero-in" style="--d:.4s">
+        <a href="#projects" class="btn btn-primary">View Projects →</a>
+        <a href="https://shaikayan13.github.io/portfoliio/Ayan%20resume%20(1).pdf" class="btn btn-outline" download>Download Resume</a>
+        <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+      <div class="socials hero-in" style="--d:.5s">
+        <a href="https://github.com/shaikayan13" target="_blank" title="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/shaik-ayan-29986030a" target="_blank" title="LinkedIn">in</a>
+        <a href="https://www.instagram.com/_ayannn.13_" target="_blank" title="Instagram">IG</a>
+        <a href="mailto:itsshaikayan@gmail.com" title="Email">@</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-text reveal-left">
+      <span class="tag">About Me</span>
+      <h2 class="title">Full-stack builder with an AI/ML edge.</h2>
+      <p>I'm a B.E. Computer Science Engineering graduate (May 2026) from K.N.S Institute of Technology, Bangalore (VTU). I completed a Full Stack Java Developer internship at Cloud Institution, Bangalore, and I've spent the last few months turning that foundation into real, shipped projects.</p>
+      <p>I work comfortably across the stack — React, Node.js, Java/Spring Boot on the backend, and Python for machine learning and computer vision. I like projects with a real point of view: a chatbot that actually answers from your documents, a drone detector that actually detects.</p>
+      <div class="stat-row">
+        <div class="stat"><b>5+</b><span>Projects Shipped</span></div>
+        <div class="stat"><b>4</b><span>Certifications</span></div>
+        <div class="stat"><b>2026</b><span>Graduating Year</span></div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="info-card">
+        <div class="info-row"><span>Email</span><span>itsshaikayan@gmail.com</span></div>
+        <div class="info-row"><span>Location</span><span>Bangalore, India</span></div>
+        <div class="info-row"><span>Education</span><span>B.E. CSE, VTU</span></div>
+        <div class="info-row"><span>Internship</span><span>Cloud Institution</span></div>
+        <div class="info-row"><span>Status</span><span>Actively Job Hunting</span></div>
+        <div class="info-row"><span>GitHub</span><span>@shaikayan13</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head reveal-left">
+      <span class="tag">Skills</span>
+      <h2 class="title">Tools I reach for.</h2>
+      <p>A working stack across frontend, backend, and applied AI/ML.</p>
+    </div>
+    <div class="skill-grid stagger-parent" id="skillGrid">
+      <!-- filled by JS -->
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal-left">
+      <span class="tag">Featured Work</span>
+      <h2 class="title">Things I've built.</h2>
+      <p>Selected projects — filter by category, or check the source on GitHub.</p>
+    </div>
+    <div class="proj-filter reveal">
+      <button class="fbtn active" data-f="all">All</button>
+      <button class="fbtn" data-f="web">Web Apps</button>
+      <button class="fbtn" data-f="ai">AI / ML</button>
+    </div>
+    <div class="proj-grid stagger-parent" id="projGrid"></div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal-left">
+      <span class="tag">Experience & Education</span>
+      <h2 class="title">Where I've been.</h2>
+    </div>
+    <div class="timeline reveal">
+      <div class="t-item">
+        <span class="when">2026</span>
+        <h3>Full Stack Java Developer — Intern</h3>
+        <p>Cloud Institution, Bangalore. Worked on Java-based web and database fundamentals as part of the VTU internship program.</p>
+      </div>
+      <div class="t-item">
+        <span class="when">2022 — 2026</span>
+        <h3>B.E. Computer Science Engineering</h3>
+        <p>K.N.S Institute of Technology, Bangalore (VTU). Graduating May 2026.</p>
+      </div>
+      <div class="t-item">
+        <span class="when">Ongoing</span>
+        <h3>Independent Projects & Job Search</h3>
+        <p>Building full-stack and AI/ML projects while interviewing for Full Stack Developer, Software Engineer Trainee, and AI/ML Engineer roles in Bangalore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <div class="section-head reveal-left">
+      <span class="tag">Certifications</span>
+      <h2 class="title">Continuous learning.</h2>
+    </div>
+    <div class="cert-grid stagger-parent">
+      <div class="cert-card stagger-child"><span class="cicon">📊</span><h4>IBM Data Science</h4></div>
+      <div class="cert-card stagger-child"><span class="cicon">📈</span><h4>TATA Data Visualisation</h4></div>
+      <div class="cert-card stagger-child"><span class="cicon">☕</span><h4>Oracle Core Java</h4></div>
+      <div class="cert-card stagger-child"><span class="cicon">📚</span><h4>EBSCO Certification</h4></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal-left">
+      <span class="tag">Get In Touch</span>
+      <h2 class="title">Let's build something.</h2>
+      <p style="color:var(--ink-soft);margin-bottom:24px;">Have a role in mind, or want to collaborate on a project? Send a message below.</p>
+      <form class="cform" action="https://formspree.io/f/xgvldgke" method="POST">
+        <input name="name" placeholder="Your Name" required>
+        <input name="email" type="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button class="btn btn-primary" type="submit" style="align-self:flex-start;">Send Message</button>
+      </form>
+    </div>
+    <div class="reveal-right">
+      <div class="contact-list">
+        <div class="c-item"><div class="c-icon">@</div><div><b>Email</b><span>itsshaikayan@gmail.com</span></div></div>
+        <div class="c-item"><div class="c-icon">in</div><div><b>LinkedIn</b><span>linkedin.com/in/shaik-ayan-29986030a</span></div></div>
+        <div class="c-item"><div class="c-icon">GH</div><div><b>GitHub</b><span>github.com/shaikayan13</span></div></div>
+        <div class="c-item"><div class="c-icon">📍</div><div><b>Location</b><span>Bangalore, India</span></div></div>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.886539092!2d77.49085284374999!3d12.95396045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1234567890" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 Shaik Ayan. Built with care.</p>
+    <div class="socials">
+      <a href="https://github.com/shaikayan13" target="_blank" style="width:36px;height:36px;font-size:14px;">GH</a>
+      <a href="https://www.linkedin.com/in/shaik-ayan-29986030a" target="_blank" style="width:36px;height:36px;font-size:14px;">in</a>
+      <a href="mailto:itsshaikayan@gmail.com" style="width:36px;height:36px;font-size:14px;">@</a>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop">↑</button>
+
+<script>
+// ---- data (project links kept identical to live site) ----
+const skills = [
+  {n:"React.js", l:88, c:"web"}, {n:"Node.js", l:82, c:"web"}, {n:"JavaScript", l:90, c:"web"},
+  {n:"Python", l:85, c:"ai"}, {n:"HTML5", l:95, c:"web"}, {n:"CSS3", l:90, c:"web"},
+  {n:"MongoDB", l:75, c:"web"}, {n:"Git", l:88, c:"web"}, {n:"TypeScript", l:70, c:"web"},
+  {n:"Socket.io", l:78, c:"web"}, {n:"Express.js", l:80, c:"web"}, {n:"AI / ML", l:82, c:"ai"}
+];
+
+
+
+const projects = [
+  {
+  img:"[INTERNSHIP PROJECT]eduverse-preview.svg", cat:"web", title:"EduVerse LMS",
+  desc:"A full-featured learning management system — admin dashboard, student & course management, attendance tracker with Excel export, and a student portal. Runs entirely in the browser.",
+  tech:["JavaScript","HTML5","CSS3"],
+  github:"https://github.com/shaikayan13/SkillUP",
+  demo:"https://shaikayan13.github.io/SkillUP/"
+},
+{
+  img:"drone-preview.svg", cat:"ai", title:"Advanced Drone Detection System",
+  desc:"[UNIVERSITY PROJECT]Real-time drone detection using YOLOv5 and OpenCV — tracks aerial objects from a live video feed, with a custom security zone that triggers alerts on intrusion.",
+  tech:["Python","OpenCV","YOLOv5"],
+  github:"https://github.com/shaikayan13/advanced-drone-detection",
+  demo:null
+},
+
+  {
+    img:"todo-preview.svg", cat:"web", title:"Todo App",
+    desc:"A React-based to-do list app for daily task management.",
+    tech:["React","JavaScript"],
+    github:"https://github.com/shaikayan13/todo-app",
+    demo:"https://shaikayan13.github.io/todo-app/"
+  },
+  {
+    img:"movie-preview.svg", cat:"web", title:"Movie Finder",
+    desc:"A React app to search movies using an external API.",
+    tech:["React","API"],
+    github:"https://github.com/shaikayan13/movie-finder",
+    demo:"https://shaikayan13.github.io/movie-finder/"
+  },
+  {
+    img:"chat-preview.svg", cat:"web", title:"Chat App",
+    desc:"Real-time chat application built with Node.js and Socket.io.",
+    tech:["Node.js","Socket.io","Express"],
+    github:"https://github.com/shaikayan13/chat-app",
+    demo:"https://chatapp-beta-one.vercel.app/"
+  },
+  {
+    img:"study-preview.svg", cat:"ai", title:"StudyBuddy AI",
+    desc:"An AI study assistant designed to help students learn more effectively.",
+    tech:["AI","JavaScript"],
+    github:"https://github.com/shaikayan13/study-buddy",
+    demo:null
+  },
+  {
+    img:"genai-preview.svg", cat:"ai", title:"GenAI Project",
+    desc:"A generative AI project built with JavaScript.",
+    tech:["GenAI","JavaScript"],
+    github:"https://github.com/shaikayan13/GenAi-project",
+    demo:null
+  }
+];
+
+// render skills
+const skillGrid = document.getElementById('skillGrid');
+skills.forEach(s=>{
+  const div = document.createElement('div');
+  div.className = 'skill-card stagger-child';
+  div.innerHTML = `<div class="sname">${s.n}</div><div class="bar"><i data-l="${s.l}"></i></div>`;
+  skillGrid.appendChild(div);
+});
+
+// render projects
+const projGrid = document.getElementById('projGrid');
+function renderProjects(filter){
+  projGrid.innerHTML = '';
+  projects.filter(p=>filter==='all'||p.cat===filter).forEach(p=>{
+    const card = document.createElement('div');
+    card.className = 'proj-card stagger-child';
+    card.innerHTML = `
+      <div class="proj-top" style="background-image:url('${p.img}');background-size:cover;background-position:center;"></div>
+      <div class="proj-body">
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <div class="tech-badges">${p.tech.map(t=>`<span class="badge">${t}</span>`).join('')}</div>
+        <div class="proj-links">
+          <a href="${p.github}" target="_blank">GitHub</a>
+          ${p.demo ? `<a href="${p.demo}" target="_blank" class="demo">Live Demo</a>` : ''}
+        </div>
+      </div>`;
+    projGrid.appendChild(card);
+  });
+}
+renderProjects('all');
+
+document.querySelectorAll('.fbtn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProjects(btn.dataset.f);
+    replayProjectStagger();
+  });
+});
+
+// typing effect
+const phrases = ["Full Stack Developer", "AI/ML Enthusiast", "Java & Spring Boot Dev", "Building with React + Node.js"];
+let pIdx=0, cIdx=0, deleting=false;
+const typeEl = document.getElementById('typeTarget');
+function type(){
+  const current = phrases[pIdx];
+  if(!deleting){
+    cIdx++;
+    typeEl.innerHTML = current.slice(0,cIdx) + '<span class="cursor">&nbsp;</span>';
+    if(cIdx===current.length){ deleting=true; setTimeout(type,1400); return; }
+  } else {
+    cIdx--;
+    typeEl.innerHTML = current.slice(0,cIdx) + '<span class="cursor">&nbsp;</span>';
+    if(cIdx===0){ deleting=false; pIdx=(pIdx+1)%phrases.length; }
+  }
+  setTimeout(type, deleting?40:80);
+}
+type();
+
+// nav scroll state
+const navbar = document.getElementById('navbar');
+const burger = document.getElementById('burger');
+const navlinks = document.getElementById('navlinks');
+burger.addEventListener('click', ()=> navlinks.classList.toggle('open'));
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
+
+const progress = document.getElementById('progress');
+const toTop = document.getElementById('toTop');
+window.addEventListener('scroll', ()=>{
+  navbar.classList.toggle('scrolled', window.scrollY>40);
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  progress.style.width = (window.scrollY/h*100)+'%';
+  toTop.classList.toggle('show', window.scrollY>600);
+
+  // active link
+  const sections = ['about','skills','projects','experience','certs','contact'];
+  let current = '';
+  sections.forEach(id=>{
+    const el = document.getElementById(id);
+    if(el && window.scrollY >= el.offsetTop - 160) current = id;
+  });
+  document.querySelectorAll('.navlinks a').forEach(a=>{
+    a.classList.toggle('active', a.getAttribute('href')==='#'+current);
+  });
+});
+toTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+// reveal on scroll (supports .reveal, .reveal-left/right/scale/flip, and stagger-parent groups)
+function observeReveals(root=document){
+  const targets = root.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-flip');
+  targets.forEach(el=>{ if(!el.dataset.observed){ el.dataset.observed='1'; io.observe(el); } });
+  root.querySelectorAll('.stagger-parent').forEach(parent=>{
+    if(parent.dataset.observed) return;
+    parent.dataset.observed='1';
+    staggerIO.observe(parent);
+  });
+}
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      if(e.target.id==='skillGrid'){
+        document.querySelectorAll('#skillGrid .bar i').forEach(bar=>{
+          bar.style.width = bar.dataset.l + '%';
+        });
+      }
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold:.15});
+
+const staggerIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const children = e.target.querySelectorAll('.stagger-child');
+      children.forEach((child,i)=>{
+        setTimeout(()=>child.classList.add('in'), i*80);
+      });
+      if(e.target.id==='skillGrid'){
+        setTimeout(()=>{
+          document.querySelectorAll('#skillGrid .bar i').forEach(bar=>{
+            bar.style.width = bar.dataset.l + '%';
+          });
+        }, children.length*80 + 200);
+      }
+      staggerIO.unobserve(e.target);
+    }
+  });
+}, {threshold:.1});
+
+observeReveals();
+
+const dot = document.getElementById('cursorDot');
+let mouseX = 0, mouseY = 0;
+
+window.addEventListener('mousemove', e=>{
+  mouseX = e.clientX; mouseY = e.clientY;
+  dot.style.transform = `translate(${mouseX - 18}px, ${mouseY - 18}px)`;
+
+  const state = classifyUnderCursor(mouseX, mouseY);
+  dot.classList.remove('on-text','on-accent');
+  if(state === 'text') dot.classList.add('on-text');
+  if(state === 'accent') dot.classList.add('on-accent');
+});
+
+document.querySelectorAll('a, button, input, textarea, .fbtn').forEach(el=>{
+  el.addEventListener('mouseenter', ()=> dot.classList.add('hovering'));
+  el.addEventListener('mouseleave', ()=> dot.classList.remove('hovering'));
+});
+
+function classifyUnderCursor(x, y){
+  dot.style.display = 'none';
+  const el = document.elementFromPoint(x, y);
+  dot.style.display = '';
+  if(!el) return 'none';
+
+  const accentEl = el.closest('.accent, .btn-primary, .fbtn.active, .badge, .tag, .stat b, .cursor');
+  if(accentEl) return 'accent';
+
+  // only count it as "text" if THIS exact element is a text node holder, not any ancestor
+  const textTags = ['H1','H2','H3','H4','P','A','SPAN','LI','LABEL','BUTTON'];
+  if(textTags.includes(el.tagName)){
+    // make sure it actually has visible text directly in it
+    const hasText = Array.from(el.childNodes).some(n => n.nodeType===3 && n.textContent.trim().length>0)
+                    || el.textContent.trim().length>0 && el.children.length===0;
+    if(hasText) return 'text';
+  }
+  return 'none';
+}
+
+// re-run stagger animation each time project filter changes
+function replayProjectStagger(){
+  const grid = document.getElementById('projGrid');
+  grid.dataset.observed = '';
+  staggerIO.unobserve(grid);
+  const rect = grid.getBoundingClientRect();
+  const inView = rect.top < window.innerHeight && rect.bottom > 0;
+  if(inView){
+    grid.querySelectorAll('.stagger-child').forEach((child,i)=>{
+      child.classList.remove('in');
+      setTimeout(()=>child.classList.add('in'), i*70);
+    });
+    grid.dataset.observed = '1';
+  } else {
+    grid.querySelectorAll('.stagger-child').forEach(c=>c.classList.remove('in'));
+    staggerIO.observe(grid);
+  }
+}
+</script>
+<!-- AyanBot Widget -->
+<div id="chatbot-launcher">💬 Ask ChatBot</div>
+
+<div id="chatbot-panel">
+  <div id="chatbot-header">
+    <span>ChatBot</span>
+    <button id="chatbot-close">&times;</button>
+  </div>
+  <div id="chatbot-messages"></div>
+  <div id="chatbot-inputrow">
+    <input id="chatbot-input" type="text" placeholder="Ask about my projects, skills..." />
+    <button id="chatbot-send">➤</button>
+  </div>
+</div>
+
+<style>
+  #chatbot-launcher {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--accent); color: #fff; font-weight: 600;
+    padding: 12px 18px; border-radius: 30px; cursor: pointer;
+    box-shadow: 0 8px 24px rgba(255,106,26,0.35);
+    font-family: 'Poppins', sans-serif; font-size: 14.5px;
+    z-index: 9999; transition: transform 0.2s ease;
+  }
+  #chatbot-launcher:hover { transform: scale(1.05); }
+
+  #chatbot-panel {
+    position: fixed; bottom: 90px; right: 24px;
+    width: 340px; max-height: 480px;
+    background: var(--bg); border: 1px solid var(--line);
+    border-radius: var(--radius); box-shadow: 0 20px 60px rgba(20,17,15,0.15);
+    display: none; flex-direction: column; overflow: hidden;
+    font-family: 'Poppins', sans-serif; z-index: 9999;
+  }
+  #chatbot-header {
+    background: var(--accent); color: #fff; padding: 14px 18px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-weight: 600; font-size: 15px;
+  }
+  #chatbot-close { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; line-height: 1; }
+  #chatbot-messages {
+    flex: 1; padding: 14px; overflow-y: auto; font-size: 14px;
+    display: flex; flex-direction: column; gap: 8px; background: var(--bg-soft);
+  }
+  .chatbot-msg { padding: 9px 13px; border-radius: 14px; max-width: 85%; line-height: 1.45; }
+  .chatbot-user { align-self: flex-end; background: var(--accent); color: #fff; }
+  .chatbot-bot { align-self: flex-start; background: var(--accent-soft); color: var(--ink); }
+  #chatbot-inputrow { display: flex; border-top: 1px solid var(--line); }
+  #chatbot-input { flex: 1; border: none; padding: 13px; font-size: 14px; outline: none; font-family: 'Poppins', sans-serif; color: var(--ink); }
+  #chatbot-send { background: var(--accent); color: #fff; border: none; padding: 0 18px; cursor: pointer; font-size: 15px; }
+</style>
+
+<script>
+(function () {
+  // ⚠️ Replace with your deployed Vercel function URL after deploying, e.g.
+  // "https://chatbot-backend.vercel.app/api/chat"
+  const API_URL = "https://YOUR-VERCEL-PROJECT.vercel.app/api/chat";
+
+  const launcher = document.getElementById('chatbot-launcher');
+  const panel = document.getElementById('chatbot-panel');
+  const closeBtn = document.getElementById('chatbot-close');
+  const messagesEl = document.getElementById('chatbot-messages');
+  const input = document.getElementById('chatbot-input');
+  const sendBtn = document.getElementById('chatbot-send');
+
+  let history = [];
+
+  launcher.onclick = () => {
+    panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+    if (messagesEl.children.length === 0) {
+      addMessage("Hi! I'm AyanBot 👋 Ask me about Ayan's projects, skills, or experience.", 'bot');
+    }
+  };
+  closeBtn.onclick = () => panel.style.display = 'none';
+
+  function addMessage(text, sender) {
+    const div = document.createElement('div');
+    div.className = 'chatbot-msg chatbot-' + sender;
+    div.textContent = text;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage(text, 'user');
+    input.value = '';
+    history.push({ role: 'user', content: text });
+
+    const loadingDiv = document.createElement('div');
+    loadingDiv.className = 'chatbot-msg chatbot-bot';
+    loadingDiv.textContent = '...';
+    messagesEl.appendChild(loadingDiv);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history })
+      });
+      const data = await res.json();
+      loadingDiv.remove();
+      const reply = data.reply || "Sorry, something went wrong.";
+      addMessage(reply, 'bot');
+      history.push({ role: 'assistant', content: reply });
+    } catch (e) {
+      loadingDiv.remove();
+      addMessage("Couldn't reach the server. Try again later.", 'bot');
+    }
+  }
+
+  sendBtn.onclick = sendMessage;
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter') sendMessage(); });
+})();
+</script>
+
+</body>
+</html>

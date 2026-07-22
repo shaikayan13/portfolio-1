@@ -1,0 +1,41 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#fff1e8"/>
+  <rect x="0" y="0" width="600" height="36" fill="#14110f"/>
+  <circle cx="20" cy="18" r="5" fill="#ff6a1a"/>
+  <circle cx="38" cy="18" r="5" fill="#ece7e0"/>
+  <circle cx="56" cy="18" r="5" fill="#ece7e0"/>
+
+  <!-- sidebar -->
+  <rect x="0" y="36" width="170" height="364" fill="#14110f"/>
+  <circle cx="30" cy="70" r="14" fill="#ff6a1a"/>
+  <text x="52" y="75" font-family="Poppins, sans-serif" font-size="13" fill="#fff">Priya</text>
+  <circle cx="8" cy="80" r="4" fill="#3ecf6a"/>
+
+  <circle cx="30" cy="118" r="14" fill="#5b5650"/>
+  <text x="52" y="123" font-family="Poppins, sans-serif" font-size="13" fill="#ece7e0">Rahul</text>
+
+  <circle cx="30" cy="166" r="14" fill="#c94e0c"/>
+  <text x="52" y="171" font-family="Poppins, sans-serif" font-size="13" fill="#ece7e0">Dev Group</text>
+
+  <rect x="16" y="200" width="138" height="34" rx="17" fill="#ff6a1a"/>
+  <text x="34" y="222" font-family="'JetBrains Mono', monospace" font-size="11" fill="#fff">● Live · Socket.io</text>
+
+  <!-- chat bubbles -->
+  <rect x="190" y="60" width="230" height="42" rx="16" fill="#ffffff" stroke="#ece7e0"/>
+  <text x="208" y="86" font-family="Poppins, sans-serif" font-size="14" fill="#14110f">Hey! Deployed the chat app 🎉</text>
+
+  <rect x="380" y="118" width="190" height="42" rx="16" fill="#ff6a1a"/>
+  <text x="398" y="144" font-family="Poppins, sans-serif" font-size="14" fill="#ffffff">Nice, sending it now</text>
+
+  <rect x="190" y="176" width="260" height="42" rx="16" fill="#ffffff" stroke="#ece7e0"/>
+  <text x="208" y="202" font-family="Poppins, sans-serif" font-size="14" fill="#14110f">Real-time messages work perfectly</text>
+
+  <rect x="410" y="234" width="160" height="42" rx="16" fill="#ff6a1a"/>
+  <text x="428" y="260" font-family="Poppins, sans-serif" font-size="14" fill="#ffffff">Let's ship it 🚀</text>
+
+  <!-- input bar -->
+  <rect x="190" y="336" width="380" height="46" rx="23" fill="#ffffff" stroke="#ece7e0"/>
+  <text x="210" y="365" font-family="Poppins, sans-serif" font-size="14" fill="#5b5650">Type a message...</text>
+  <circle cx="540" cy="359" r="16" fill="#14110f"/>
+  <path d="M534 359 l12 0 M542 353 l6 6 l-6 6" stroke="#fff" stroke-width="2" fill="none"/>
+</svg>

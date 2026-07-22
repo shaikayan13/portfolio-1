@@ -1,0 +1,46 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#fbfaf8"/>
+  <rect x="0" y="0" width="600" height="36" fill="#14110f"/>
+  <circle cx="20" cy="18" r="5" fill="#ff6a1a"/>
+  <circle cx="38" cy="18" r="5" fill="#ece7e0"/>
+  <circle cx="56" cy="18" r="5" fill="#ece7e0"/>
+
+  <rect x="40" y="58" width="520" height="44" rx="22" fill="#ffffff" stroke="#ece7e0"/>
+  <circle cx="66" cy="80" r="7" fill="none" stroke="#ff6a1a" stroke-width="2.5"/>
+  <line x1="71" y1="85" x2="78" y2="92" stroke="#ff6a1a" stroke-width="2.5"/>
+  <text x="92" y="86" font-family="Poppins, sans-serif" font-size="15" fill="#5b5650">Search movies, e.g. Inception...</text>
+
+  <!-- movie cards grid -->
+  <g>
+    <rect x="40" y="118" width="110" height="160" rx="12" fill="#ff6a1a" opacity="0.15"/>
+    <rect x="48" y="126" width="94" height="120" rx="8" fill="#14110f" opacity="0.8"/>
+    <text x="55" y="264" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#14110f">Interstellar</text>
+    <text x="55" y="278" font-family="'JetBrains Mono', monospace" font-size="10" fill="#c94e0c">★ 8.7</text>
+  </g>
+  <g>
+    <rect x="164" y="118" width="110" height="160" rx="12" fill="#ff6a1a" opacity="0.15"/>
+    <rect x="172" y="126" width="94" height="120" rx="8" fill="#c94e0c" opacity="0.55"/>
+    <text x="179" y="264" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#14110f">Inception</text>
+    <text x="179" y="278" font-family="'JetBrains Mono', monospace" font-size="10" fill="#c94e0c">★ 8.8</text>
+  </g>
+  <g>
+    <rect x="288" y="118" width="110" height="160" rx="12" fill="#ff6a1a" opacity="0.15"/>
+    <rect x="296" y="126" width="94" height="120" rx="8" fill="#5b5650" opacity="0.5"/>
+    <text x="303" y="264" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#14110f">Dune</text>
+    <text x="303" y="278" font-family="'JetBrains Mono', monospace" font-size="10" fill="#c94e0c">★ 8.3</text>
+  </g>
+  <g>
+    <rect x="412" y="118" width="148" height="160" rx="12" fill="#ff6a1a" opacity="0.15"/>
+    <rect x="420" y="126" width="132" height="120" rx="8" fill="#14110f" opacity="0.65"/>
+    <text x="427" y="264" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#14110f">The Matrix</text>
+    <text x="427" y="278" font-family="'JetBrains Mono', monospace" font-size="10" fill="#c94e0c">★ 8.7</text>
+  </g>
+
+  <g>
+    <rect x="40" y="298" width="110" height="160" rx="12" fill="#ff6a1a" opacity="0.10"/>
+    <rect x="48" y="306" width="94" height="80" rx="8" fill="#ff6a1a" opacity="0.35"/>
+    <text x="55" y="400" font-family="Poppins, sans-serif" font-size="12" font-weight="600" fill="#14110f">Oppenheimer</text>
+  </g>
+
+  <text x="415" y="310" font-family="'JetBrains Mono', monospace" font-size="11" fill="#5b5650">Powered by OMDb + Jikan API</text>
+</svg>
