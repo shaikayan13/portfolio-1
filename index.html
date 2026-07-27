@@ -274,6 +274,14 @@
   .cert-card .cicon{font-size:24px;}
   .cert-card h4{font-size:15px;font-weight:700;}
   .cert-card a{font-size:13px;color:var(--accent-deep);font-weight:600;}
+  .cert-preview {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  background: var(--bg-soft);
+}
 
   /* contact */
   .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
@@ -331,6 +339,56 @@
 .cursor-dot.on-accent{
   opacity:1;
   background:var(--ink);
+}
+.proj-stats {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent-deep);
+  margin: 6px 0 10px;
+}
+.case-toggle {
+  background: none; border: none; color: var(--accent);
+  font-weight: 600; cursor: pointer; padding: 0;
+  margin-top: 8px; font-size: 0.85rem;
+}
+.case-study {
+  display: none; margin-top: 10px; padding-top: 10px;
+  border-top: 1px solid var(--line); font-size: 0.85rem;
+  line-height: 1.5; color: var(--ink);
+}
+.case-study.open { display: block; }
+
+.oss-card {
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-top: 32px;
+}
+.oss-card .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.oss-card h3 {
+  margin: 6px 0 10px;
+  color: var(--ink);
+}
+.oss-card p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.oss-card code {
+  background: var(--accent-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
 }
 </style>
 </head>
@@ -409,6 +467,19 @@
   </div>
 </section>
 
+<section id="stats">
+  <div class="wrap">
+    <div class="section-head reveal-left">
+      <span class="tag">GitHub Activity</span>
+      <h2 class="title">Always up to date.</h2>
+      <p>Check my latest commits, repos, and contribution history directly.</p>
+    </div>
+    <a href="https://github.com/shaikayan13" target="_blank" class="btn btn-primary reveal">
+      View GitHub Profile →
+    </a>
+  </div>
+</section>
+
 <section id="skills">
   <div class="wrap">
     <div class="section-head reveal-left">
@@ -435,6 +506,22 @@
       <button class="fbtn" data-f="ai">AI / ML</button>
     </div>
     <div class="proj-grid stagger-parent" id="projGrid"></div>
+
+    <div class="oss-card reveal">
+      <div class="oss-body">
+        <span class="tag">Open Source</span>
+        <h3>FitMart — PR #671</h3>
+        <p>Contributed to an open-source React e-commerce project by centralizing scattered Google Fonts imports across 19 components into a single shared stylesheet — reducing duplication and improving load consistency. Deliberately left <code>ProductConfirmation.jsx</code> untouched since it renders in a standalone popup context.</p>
+        <div class="tech-badges">
+          <span class="badge">React</span>
+          <span class="badge">Open Source</span>
+          <span class="badge">Refactoring</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/shaikayan13/fitmart" target="_blank">View PR on GitHub</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -471,11 +558,23 @@
       <h2 class="title">Continuous learning.</h2>
     </div>
     <div class="cert-grid stagger-parent">
-      <div class="cert-card stagger-child"><span class="cicon">📊</span><h4>IBM Data Science</h4></div>
-      <div class="cert-card stagger-child"><span class="cicon">📈</span><h4>TATA Data Visualisation</h4></div>
-      <div class="cert-card stagger-child"><span class="cicon">☕</span><h4>Oracle Core Java</h4></div>
-      <div class="cert-card stagger-child"><span class="cicon">📚</span><h4>EBSCO Certification</h4></div>
-    </div>
+  <a href="https://drive.google.com/file/d/1VtqrXO3tgLgWvpGMS4RbRcYLfZk-xI6-/view?usp=drivesdk" target="_blank" class="cert-card stagger-child">
+    <img src="https://drive.google.com/thumbnail?id=1VtqrXO3tgLgWvpGMS4RbRcYLfZk-xI6-&sz=w400" alt="IBM Data Science Certificate" class="cert-preview">
+    <h4>IBM Data Science</h4>
+  </a>
+  <a href="https://drive.google.com/file/d/1NbRvy7ykjFa-oD7c7sTkdpmXSEjBRKSb/view?usp=drivesdk" target="_blank" class="cert-card stagger-child">
+    <img src="https://drive.google.com/thumbnail?id=1NbRvy7ykjFa-oD7c7sTkdpmXSEjBRKSb&sz=w400" alt="TATA Data Visualisation Certificate" class="cert-preview">
+    <h4>TATA Data Visualisation</h4>
+  </a>
+  <a href="https://drive.google.com/file/d/1UlX9ddUjG9U3pIOqho5bbjg02OcHUcu5/view?usp=drivesdk" target="_blank" class="cert-card stagger-child">
+    <img src="https://drive.google.com/thumbnail?id=1UlX9ddUjG9U3pIOqho5bbjg02OcHUcu5&sz=w400" alt="Oracle Core Java Certificate" class="cert-preview">
+    <h4>Oracle Core Java</h4>
+  </a>
+  <a href="https://drive.google.com/file/d/1Nk-QT6p-lFXlHmvTKxyeDLXr3K1DK6SE/view" target="_blank" class="cert-card stagger-child">
+    <img src="https://drive.google.com/thumbnail?id=1Nk-QT6p-lFXlHmvTKxyeDLXr3K1DK6SE&sz=w400" alt="EBSCO Certificate" class="cert-preview">
+    <h4>EBSCO Certification</h4>
+  </a>
+</div>
   </div>
 </section>
 
@@ -534,6 +633,9 @@ const projects = [
   {
   img:"eduverse-preview.svg", cat:"web", title:"EduVerse LMS",
   desc:"[INTERNSHIP PROJECT] A full-featured learning management system — admin dashboard, student & course management, attendance tracker with Excel export, and a student portal. Runs entirely in the browser.",
+  stats:"Dual portals · OTP auth · localStorage persistence",
+  case:"Built to simulate a real institutional LMS without a backend. Admin and Student portals share data via localStorage (courses, students, assignments, grades, announcements), with OTP-style login flow and Google Sign-In UI. Focus was on realistic data modeling and UX for two very different user roles in one app.",
+  tech:["JavaScript","HTML5","CSS3"],
   tech:["JavaScript","HTML5","CSS3"],
   github:"https://github.com/shaikayan13/SkillUP",
   demo:"https://shaikayan13.github.io/SkillUP/"
@@ -541,6 +643,8 @@ const projects = [
 {
   img:"drone-preview.svg", cat:"ai", title:"Advanced Drone Detection System",
   desc:"[UNIVERSITY PROJECT]Real-time drone detection using YOLOv5 and OpenCV — tracks aerial objects from a live video feed, with a custom security zone that triggers alerts on intrusion.",
+  stats:"YOLOv5 · Real-time video · Custom alert zones",
+  case:"Combined YOLOv5 object detection with OpenCV video processing to flag drones entering a defined security perimeter in real time. Challenge was balancing detection accuracy with processing speed on live feed input, and designing zone-intrusion logic that triggers alerts reliably without false positives.",
   tech:["Python","OpenCV","YOLOv5"],
   github:"https://github.com/shaikayan13/advanced-drone-detection",
   demo:null
@@ -549,6 +653,8 @@ const projects = [
   {
     img:"todo-preview.svg", cat:"web", title:"Todo App",
     desc:"A React-based to-do list app for daily task management.",
+    stats:"React · Local state management · CRUD operations",
+  case:"A focused React project to practice component architecture and state management. Handles add, edit, delete, and complete-task flows with clean, reusable components — built as a foundation before taking on larger apps like the Chat App and EduVerse.",
     tech:["React","JavaScript"],
     github:"https://github.com/shaikayan13/todo-app",
     demo:"https://shaikayan13.github.io/todo-app/"
@@ -556,6 +662,9 @@ const projects = [
   {
     img:"movie-preview.svg", cat:"web", title:"Movie Finder",
     desc:"A React app to search movies using an external API.",
+    stats:"OMDb + Jikan APIs · Debounced search · Async data fetching",
+  case:"Built to practice consuming external REST APIs cleanly in React. Integrates OMDb for movies and Jikan for anime, with debounced input to avoid excessive API calls and proper loading/error states for a smooth search experience.",
+  tech:["React","API"],
     tech:["React","API"],
     github:"https://github.com/shaikayan13/movie-finder",
     demo:"https://shaikayan13.github.io/movie-finder/"
@@ -563,6 +672,8 @@ const projects = [
   {
     img:"chat-preview.svg", cat:"web", title:"Chat App",
     desc:"Real-time chat application built with Node.js and Socket.io.",
+    stats:"WebSockets · Real-time messaging · Node.js backend",
+  case:"Built to learn real-time, bidirectional communication using Socket.io over WebSockets. Handles multiple concurrent users, instant message delivery, and connection state — deployed live on Vercel with an Express backend.",
     tech:["Node.js","Socket.io","Express"],
     github:"https://github.com/shaikayan13/chat-app",
     demo:"https://chatapp-beta-one.vercel.app/"
@@ -570,6 +681,8 @@ const projects = [
   {
     img:"study-preview.svg", cat:"ai", title:"StudyBuddy AI",
     desc:"An AI study assistant designed to help students learn more effectively.",
+    stats:"AI-assisted learning · JavaScript · Interactive Q&A",
+  case:"An early exploration into building AI-assisted tools for education — an interactive assistant aimed at helping students study more effectively through guided Q&A, laying groundwork for later, more advanced AI projects.",
     tech:["AI","JavaScript"],
     github:"https://github.com/shaikayan13/study-buddy",
     demo:null
@@ -577,6 +690,8 @@ const projects = [
   {
     img:"genai-preview.svg", cat:"ai", title:"GenAI Project",
     desc:"A generative AI project built with JavaScript.",
+    stats:"Generative AI · JavaScript · API integration",
+  case:"A hands-on project exploring generative AI integration in a JavaScript environment — part of building practical AI/ML experience alongside the Spring AI RAG chatbot and drone detection system.",
     tech:["GenAI","JavaScript"],
     github:"https://github.com/shaikayan13/GenAi-project",
     demo:null
@@ -604,6 +719,7 @@ function renderProjects(filter){
       <div class="proj-body">
         <h3>${p.title}</h3>
         <p>${p.desc}</p>
+        <p class="proj-stats">${p.stats || ''}</p>
         <div class="tech-badges">${p.tech.map(t=>`<span class="badge">${t}</span>`).join('')}</div>
         <div class="proj-links">
           <a href="${p.github}" target="_blank">GitHub</a>
