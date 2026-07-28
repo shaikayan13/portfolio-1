@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shaik Ayan — Full Stack Developer</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff6a1a'/%3E%3Cstop offset='1' stop-color='%23c94e0c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='66' font-size='50' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Shaik Ayan - Full Stack Developer">
+<meta property="og:description" content="Full Stack Developer & AI/ML Engineer building React, Node.js, Spring Boot and AI-powered projects.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shaikayan13.github.io/portfoliio/">
+<meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -305,7 +311,7 @@
   .map-embed{border-radius:16px;overflow:hidden;border:1px solid var(--line);margin-top:20px;}
   .map-embed iframe{width:100%;height:200px;border:0;display:block;}
 
-  footer{padding:40px 0;border-top:1px solid var(--line);}
+  footer{padding:40px 0 100px;border-top:1px solid var(--line);}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
   footer p{font-size:13.5px;color:var(--ink-soft);}
 
@@ -390,6 +396,79 @@
   border-radius: 4px;
   font-size: 0.85em;
 }
+
+/* Terminal Intro */
+.terminal-intro{
+  background:#14110f;border-radius:14px;max-width:480px;margin-bottom:22px;
+  overflow:hidden;box-shadow:0 20px 40px -20px rgba(20,17,15,.4);
+}
+.terminal-bar{display:flex;gap:6px;padding:10px 14px;background:rgba(255,255,255,.05);}
+.terminal-bar span{width:10px;height:10px;border-radius:50%;background:#5b5650;}
+.terminal-bar span:nth-child(1){background:#ff6a6a;}
+.terminal-bar span:nth-child(2){background:#ffd166;}
+.terminal-bar span:nth-child(3){background:#6adf8f;}
+.terminal-body{padding:16px 18px;font-family:'JetBrains Mono',monospace;font-size:13.5px;}
+.terminal-line{color:#e8e4de;margin-bottom:6px;}
+.terminal-line .tprompt{color:var(--accent);}
+.terminal-cursor{display:inline-block;width:7px;height:14px;background:var(--accent);margin-left:2px;vertical-align:middle;animation:blink 1s step-end infinite;}
+.terminal-output{color:#9d968c;min-height:1.2em;white-space:pre-wrap;}
+
+/* Now Section */
+.now-section{padding:36px 0;}
+.now-card{
+  display:flex;align-items:flex-start;gap:14px;background:var(--accent-soft);
+  border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;
+}
+.now-dot{width:10px;height:10px;border-radius:50%;background:#2fae5c;margin-top:7px;flex-shrink:0;animation:nowpulse 2s infinite;}
+@keyframes nowpulse{
+  0%{box-shadow:0 0 0 0 rgba(47,174,92,.5);}
+  70%{box-shadow:0 0 0 8px rgba(47,174,92,0);}
+  100%{box-shadow:0 0 0 0 rgba(47,174,92,0);}
+}
+.now-label{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--accent-deep);font-weight:700;letter-spacing:.08em;display:block;margin-bottom:6px;}
+.now-card p{color:var(--ink-soft);margin:0;line-height:1.6;font-size:14.5px;}
+
+/* GitHub Stats */
+.github-stats{display:flex;gap:28px;margin-top:22px;padding-top:22px;border-top:1px dashed var(--line);}
+.gh-stat{display:flex;flex-direction:column;}
+.gh-num{font-size:22px;font-weight:800;color:var(--accent-deep);}
+.gh-label{font-size:12px;color:var(--ink-soft);}
+
+/* Architecture Diagram */
+.arch-wrap{margin-top:56px;text-align:center;}
+.arch-title{font-size:20px;font-weight:700;margin-bottom:24px;}
+.arch-diagram{width:100%;max-width:800px;height:auto;}
+.arch-caption{color:var(--ink-soft);max-width:680px;margin:14px auto 0;font-size:14px;line-height:1.7;}
+
+/* Command Palette */
+.cmdk-trigger{
+  display:flex;align-items:center;gap:6px;background:var(--accent-soft);
+  border:1.5px solid var(--line);color:var(--accent-deep);padding:8px 14px;
+  border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;transition:.25s;
+}
+.cmdk-trigger:hover{border-color:var(--accent);}
+.cmdk-overlay{
+  display:none;position:fixed;inset:0;background:rgba(20,17,15,.45);
+  backdrop-filter:blur(3px);z-index:9998;justify-content:center;align-items:flex-start;padding-top:12vh;
+}
+.cmdk-overlay.active{display:flex;}
+.cmdk-box{
+  background:#fff;border:1px solid var(--line);border-radius:16px;width:90%;max-width:540px;
+  box-shadow:0 30px 60px rgba(20,17,15,.25);overflow:hidden;
+}
+.cmdk-input-wrap{
+  display:flex;align-items:center;gap:10px;padding:16px 18px;
+  border-bottom:1px solid var(--line);color:var(--accent-deep);
+}
+.cmdk-input-wrap input{
+  flex:1;border:none;outline:none;font-size:15px;font-family:'Poppins',sans-serif;color:var(--ink);
+}
+.cmdk-list{list-style:none;max-height:320px;overflow-y:auto;}
+.cmdk-list li{
+  padding:13px 18px;color:var(--ink-soft);cursor:pointer;display:flex;align-items:center;gap:10px;
+  font-size:14px;transition:.15s;
+}
+.cmdk-list li:hover,.cmdk-list li.active-item{background:var(--accent-soft);color:var(--ink);}
 </style>
 </head>
 <body>
@@ -400,6 +479,7 @@
 <nav id="navbar">
   <div class="wrap">
     <div class="brand"><span class="dot"></span> Ayan.dev</div>
+    <button class="cmdk-trigger" id="cmdkTrigger" title="Command palette">🔍 <span>⌘K</span></button>
     <button class="burger" id="burger">☰</button>
     <div class="navlinks" id="navlinks">
       <a href="#about">About</a>
@@ -422,6 +502,13 @@
   <div class="photo-tag hero-in" style="--d:.5s">&gt; whoami<span class="blink">_</span> Ayan · Bangalore, IN</div>
 </div>
     <div class="hero-text">
+      <div class="terminal-intro hero-in" style="--d:0s">
+        <div class="terminal-bar"><span></span><span></span><span></span></div>
+        <div class="terminal-body">
+          <p class="terminal-line"><span class="tprompt">ayan@portfolio</span>:~$ <span id="typedCmd"></span><span class="terminal-cursor"></span></p>
+          <p class="terminal-output" id="typedOutput"></p>
+        </div>
+      </div>
       <div class="eyebrow hero-in" style="--d:0s"><span class="pulse"></span> Open to Full Stack / SDE / AI-ML roles</div>
       <h1 class="name hero-in" style="--d:.1s">Hi, I'm <span class="accent">Ayan.</span><br>I build things<br>for the web.</h1>
       <div class="typing-line hero-in" style="--d:.2s" id="typeTarget"></div>
@@ -440,6 +527,18 @@
     </div>
   </div>
 </header>
+
+<section class="now-section">
+  <div class="wrap">
+    <div class="now-card reveal">
+      <div class="now-dot"></div>
+      <div>
+        <span class="now-label">NOW · JULY 2026</span>
+        <p>Actively job hunting for <strong>Full Stack / SDE / AI-ML Engineer</strong> roles in Bangalore, while shipping updates to <strong>the-gadget-shelf</strong> — a Spring Boot microservices e-commerce backend with Docker and CI/CD.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="about">
   <div class="wrap about-grid">
@@ -462,6 +561,11 @@
         <div class="info-row"><span>Internship</span><span>Cloud Institution</span></div>
         <div class="info-row"><span>Status</span><span>Actively Job Hunting</span></div>
         <div class="info-row"><span>GitHub</span><span>@shaikayan13</span></div>
+      </div>
+      <div class="github-stats" id="githubStats">
+        <div class="gh-stat"><span class="gh-num" id="ghRepos">--</span><span class="gh-label">Repos</span></div>
+        <div class="gh-stat"><span class="gh-num" id="ghFollowers">--</span><span class="gh-label">Followers</span></div>
+        <div class="gh-stat"><span class="gh-num" id="ghSince">--</span><span class="gh-label">On GitHub since</span></div>
       </div>
     </div>
   </div>
@@ -521,6 +625,43 @@
           <a href="https://github.com/shaikayan13/fitmart" target="_blank">View PR on GitHub</a>
         </div>
       </div>
+    </div>
+
+    <div class="arch-wrap reveal">
+      <h3 class="arch-title">How I build full-stack systems</h3>
+      <svg viewBox="0 0 800 220" class="arch-diagram" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrowOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#ff6a1a"/>
+          </marker>
+        </defs>
+        <rect x="20" y="70" width="140" height="80" rx="14" fill="#fff1e8" stroke="#ff6a1a"/>
+        <text x="90" y="105" fill="#14110f" font-size="13" text-anchor="middle" font-family="Poppins">React /</text>
+        <text x="90" y="122" fill="#14110f" font-size="13" text-anchor="middle" font-family="Poppins">Frontend</text>
+
+        <rect x="220" y="70" width="140" height="80" rx="14" fill="#fff1e8" stroke="#c94e0c"/>
+        <text x="290" y="105" fill="#14110f" font-size="13" text-anchor="middle" font-family="Poppins">Node/Spring</text>
+        <text x="290" y="122" fill="#14110f" font-size="13" text-anchor="middle" font-family="Poppins">API Layer</text>
+
+        <rect x="420" y="20" width="150" height="60" rx="14" fill="#fff1e8" stroke="#ff6a1a"/>
+        <text x="495" y="55" fill="#14110f" font-size="13" text-anchor="middle" font-family="Poppins">Auth Service</text>
+
+        <rect x="420" y="90" width="150" height="60" rx="14" fill="#fff1e8" stroke="#ff6a1a"/>
+        <text x="495" y="125" fill="#14110f" font-size="13" text-anchor="middle" font-family="Poppins">Data Service</text>
+
+        <rect x="420" y="160" width="150" height="45" rx="14" fill="#fff1e8" stroke="#ff6a1a"/>
+        <text x="495" y="187" fill="#14110f" font-size="12" text-anchor="middle" font-family="Poppins">Docker Compose</text>
+
+        <rect x="630" y="70" width="140" height="80" rx="14" fill="#fff1e8" stroke="#c94e0c"/>
+        <text x="700" y="105" fill="#14110f" font-size="13" text-anchor="middle" font-family="Poppins">PostgreSQL /</text>
+        <text x="700" y="122" fill="#14110f" font-size="13" text-anchor="middle" font-family="Poppins">MongoDB</text>
+
+        <line x1="160" y1="110" x2="215" y2="110" stroke="#ff6a1a" stroke-width="2" marker-end="url(#arrowOrange)"/>
+        <line x1="360" y1="90" x2="415" y2="55" stroke="#ff6a1a" stroke-width="2" marker-end="url(#arrowOrange)"/>
+        <line x1="360" y1="110" x2="415" y2="118" stroke="#ff6a1a" stroke-width="2" marker-end="url(#arrowOrange)"/>
+        <line x1="570" y1="110" x2="625" y2="110" stroke="#ff6a1a" stroke-width="2" marker-end="url(#arrowOrange)"/>
+      </svg>
+      <p class="arch-caption">A typical service breakdown from projects like the-gadget-shelf: frontend talks to an API layer, which routes to independent auth/data microservices, containerized via Docker Compose, backed by a relational or document store.</p>
     </div>
   </div>
 </section>
@@ -594,8 +735,8 @@
     <div class="reveal-right">
       <div class="contact-list">
         <div class="c-item"><div class="c-icon">@</div><div><b>Email</b><span>itsshaikayan@gmail.com</span></div></div>
-        <div class="c-item"><div class="c-icon">in</div><div><b>LinkedIn</b><span>linkedin.com/in/shaik-ayan-29986030a</span></div></div>
-        <div class="c-item"><div class="c-icon">GH</div><div><b>GitHub</b><span>github.com/shaikayan13</span></div></div>
+      <div class="c-item"><div class="c-icon" style="padding:9px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="100%" height="100%" fill-rule="nonzero"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.33333,5.33333)"><path d="M42,37c0,2.762 -2.238,5 -5,5h-26c-2.761,0 -5,-2.238 -5,-5v-26c0,-2.762 2.239,-5 5,-5h26c2.762,0 5,2.238 5,5z" fill="#ff6a1a"></path><path d="M12,19h5v17h-5zM14.485,17h-0.028c-1.492,0 -2.457,-1.112 -2.457,-2.501c0,-1.419 0.995,-2.499 2.514,-2.499c1.521,0 2.458,1.08 2.486,2.499c0,1.388 -0.965,2.501 -2.515,2.501zM36,36h-5v-9.099c0,-2.198 -1.225,-3.698 -3.192,-3.698c-1.501,0 -2.313,1.012 -2.707,1.99c-0.144,0.35 -0.101,1.318 -0.101,1.807v9h-5v-17h5v2.616c0.721,-1.116 1.85,-2.616 4.738,-2.616c3.578,0 6.261,2.25 6.261,7.274l0.001,9.726z" fill="#ffffff"></path></g></g></svg></div><div><b>LinkedIn</b><span>linkedin.com/in/shaik-ayan-29986030a</span></div></div>
+        <div class="c-item"><div class="c-icon" style="padding:10px;"><svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512" width="100%" height="100%"><path d="M256 6.3C114.6 6.3 0 120.9 0 262.3c0 113.3 73.3 209 175 242.9 12.8 2.2 17.6-5.4 17.6-12.2 0-6.1-.3-26.2-.3-47.7-64.3 11.8-81-15.7-86.1-30.1-2.9-7.4-15.4-30.1-26.2-36.2-9-4.8-21.8-16.6-.3-17 20.2-.3 34.6 18.6 39.4 26.2 23 38.7 59.8 27.8 74.6 21.1 2.2-16.6 9-27.8 16.3-34.2-57-6.4-116.5-28.5-116.5-126.4 0-27.8 9.9-50.9 26.2-68.8-2.6-6.4-11.5-32.6 2.6-67.8 0 0 21.4-6.7 70.4 26.2 20.5-5.8 42.2-8.6 64-8.6s43.5 2.9 64 8.6c49-33.3 70.4-26.2 70.4-26.2 14.1 35.2 5.1 61.4 2.6 67.8 16.3 17.9 26.2 40.6 26.2 68.8 0 98.2-59.8 120-116.8 126.4 9.3 8 17.3 23.4 17.3 47.4 0 34.2-.3 61.8-.3 70.4 0 6.7 4.8 14.7 17.6 12.2C438.7 471.3 512 375.3 512 262.3c0-141.4-114.6-256-256-256" style="fill-rule:evenodd;clip-rule:evenodd;fill:#ff6a1a"/></svg></div><div><b>GitHub</b><span>github.com/shaikayan13</span></div></div>
         <div class="c-item"><div class="c-icon">📍</div><div><b>Location</b><span>Bangalore, India</span></div></div>
       </div>
       <div class="map-embed">
@@ -609,8 +750,8 @@
   <div class="wrap">
     <p>© 2026 Shaik Ayan. Built with care.</p>
     <div class="socials">
-      <a href="https://github.com/shaikayan13" target="_blank" style="width:36px;height:36px;font-size:14px;">GH</a>
-      <a href="https://www.linkedin.com/in/shaik-ayan-29986030a" target="_blank" style="width:36px;height:36px;font-size:14px;">in</a>
+      <a href="https://github.com/shaikayan13" target="_blank" style="width:36px;height:36px;font-size:14px;padding:7px;"><svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" viewBox="0 0 512 512" width="100%" height="100%"><path d="M256 6.3C114.6 6.3 0 120.9 0 262.3c0 113.3 73.3 209 175 242.9 12.8 2.2 17.6-5.4 17.6-12.2 0-6.1-.3-26.2-.3-47.7-64.3 11.8-81-15.7-86.1-30.1-2.9-7.4-15.4-30.1-26.2-36.2-9-4.8-21.8-16.6-.3-17 20.2-.3 34.6 18.6 39.4 26.2 23 38.7 59.8 27.8 74.6 21.1 2.2-16.6 9-27.8 16.3-34.2-57-6.4-116.5-28.5-116.5-126.4 0-27.8 9.9-50.9 26.2-68.8-2.6-6.4-11.5-32.6 2.6-67.8 0 0 21.4-6.7 70.4 26.2 20.5-5.8 42.2-8.6 64-8.6s43.5 2.9 64 8.6c49-33.3 70.4-26.2 70.4-26.2 14.1 35.2 5.1 61.4 2.6 67.8 16.3 17.9 26.2 40.6 26.2 68.8 0 98.2-59.8 120-116.8 126.4 9.3 8 17.3 23.4 17.3 47.4 0 34.2-.3 61.8-.3 70.4 0 6.7 4.8 14.7 17.6 12.2C438.7 471.3 512 375.3 512 262.3c0-141.4-114.6-256-256-256" style="fill-rule:evenodd;clip-rule:evenodd;fill:#14110f"/></svg></a>
+      <a href="https://www.linkedin.com/in/shaik-ayan-29986030a" target="_blank" style="width:36px;height:36px;font-size:14px;padding:6px;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="100%" height="100%" fill-rule="nonzero"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.33333,5.33333)"><path d="M42,37c0,2.762 -2.238,5 -5,5h-26c-2.761,0 -5,-2.238 -5,-5v-26c0,-2.762 2.239,-5 5,-5h26c2.762,0 5,2.238 5,5z" fill="#14110f"></path><path d="M12,19h5v17h-5zM14.485,17h-0.028c-1.492,0 -2.457,-1.112 -2.457,-2.501c0,-1.419 0.995,-2.499 2.514,-2.499c1.521,0 2.458,1.08 2.486,2.499c0,1.388 -0.965,2.501 -2.515,2.501zM36,36h-5v-9.099c0,-2.198 -1.225,-3.698 -3.192,-3.698c-1.501,0 -2.313,1.012 -2.707,1.99c-0.144,0.35 -0.101,1.318 -0.101,1.807v9h-5v-17h5v2.616c0.721,-1.116 1.85,-2.616 4.738,-2.616c3.578,0 6.261,2.25 6.261,7.274l0.001,9.726z" fill="#ffffff"></path></g></g></svg></a>
       <a href="mailto:itsshaikayan@gmail.com" style="width:36px;height:36px;font-size:14px;">@</a>
     </div>
   </div>
@@ -1080,3 +1221,153 @@ function replayProjectStagger(){
   });
 })();
 </script>
+
+<!-- Command Palette -->
+<div id="cmdkOverlay" class="cmdk-overlay">
+  <div class="cmdk-box">
+    <div class="cmdk-input-wrap">
+      🔍
+      <input type="text" id="cmdkInput" placeholder="Jump to a section or action...">
+    </div>
+    <ul id="cmdkList" class="cmdk-list"></ul>
+  </div>
+</div>
+
+<script>
+// --- Terminal Typing Intro ---
+(function typeTerminal(){
+  const cmdEl = document.getElementById('typedCmd');
+  const outEl = document.getElementById('typedOutput');
+  if(!cmdEl || !outEl) return;
+  const command = 'whoami --role';
+  const output = 'Full Stack Developer | React, Node.js, Spring Boot, AI/ML';
+  let i = 0;
+  function typeCmd(){
+    if(i < command.length){
+      cmdEl.textContent += command.charAt(i);
+      i++;
+      setTimeout(typeCmd, 65);
+    } else {
+      setTimeout(typeOutput, 400);
+    }
+  }
+  let j = 0;
+  function typeOutput(){
+    if(j < output.length){
+      outEl.textContent += output.charAt(j);
+      j++;
+      setTimeout(typeOutput, 18);
+    }
+  }
+  setTimeout(typeCmd, 900);
+})();
+
+// --- Live GitHub Stats ---
+(function loadGithubStats(){
+  const reposEl = document.getElementById('ghRepos');
+  const followersEl = document.getElementById('ghFollowers');
+  const sinceEl = document.getElementById('ghSince');
+  if(!reposEl) return;
+  fetch('https://api.github.com/users/shaikayan13')
+    .then(res => res.json())
+    .then(data => {
+      if(data && !data.message){
+        reposEl.textContent = data.public_repos ?? '--';
+        followersEl.textContent = data.followers ?? '--';
+        sinceEl.textContent = data.created_at ? new Date(data.created_at).getFullYear() : '--';
+      } else {
+        reposEl.textContent = '—'; followersEl.textContent = '—'; sinceEl.textContent = '—';
+      }
+    })
+    .catch(() => {
+      reposEl.textContent = '—'; followersEl.textContent = '—'; sinceEl.textContent = '—';
+    });
+})();
+
+// --- Command Palette (Cmd+K / Ctrl+K) ---
+(function commandPalette(){
+  const overlay = document.getElementById('cmdkOverlay');
+  const input = document.getElementById('cmdkInput');
+  const list = document.getElementById('cmdkList');
+  const trigger = document.getElementById('cmdkTrigger');
+  if(!overlay || !input || !list) return;
+
+  const commands = [
+    { label: 'Go to About', icon: '👤', action: () => scrollToSection('about') },
+    { label: 'Go to Skills', icon: '🛠️', action: () => scrollToSection('skills') },
+    { label: 'Go to Projects', icon: '💼', action: () => scrollToSection('projects') },
+    { label: 'Go to Experience', icon: '🎓', action: () => scrollToSection('experience') },
+    { label: 'Go to Certifications', icon: '📜', action: () => scrollToSection('certs') },
+    { label: 'Go to Contact', icon: '✉️', action: () => scrollToSection('contact') },
+    { label: 'Download Resume', icon: '⬇️', action: () => { const a = document.querySelector('a[download]'); if(a) a.click(); } },
+    { label: 'Open GitHub Profile', icon: '🐙', action: () => window.open('https://github.com/shaikayan13', '_blank') },
+    { label: 'Email Ayan', icon: '📧', action: () => window.location.href = 'mailto:itsshaikayan@gmail.com' }
+  ];
+
+  function scrollToSection(id){
+    const target = document.getElementById(id);
+    if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  let activeIndex = 0;
+
+  function render(filter = ''){
+    const filtered = commands.filter(c => c.label.toLowerCase().includes(filter.toLowerCase()));
+    list.innerHTML = filtered.map((c, idx) =>
+      `<li data-idx="${idx}" class="${idx === activeIndex ? 'active-item' : ''}">${c.icon} ${c.label}</li>`
+    ).join('');
+    return filtered;
+  }
+
+  let currentFiltered = render();
+
+  function openPalette(){
+    overlay.classList.add('active');
+    input.value = '';
+    activeIndex = 0;
+    currentFiltered = render();
+    setTimeout(() => input.focus(), 50);
+  }
+  function closePalette(){ overlay.classList.remove('active'); }
+
+  if(trigger) trigger.addEventListener('click', openPalette);
+
+  document.addEventListener('keydown', (e) => {
+    if((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){
+      e.preventDefault();
+      overlay.classList.contains('active') ? closePalette() : openPalette();
+    }
+    if(e.key === 'Escape') closePalette();
+  });
+
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) closePalette(); });
+
+  input.addEventListener('input', () => {
+    activeIndex = 0;
+    currentFiltered = render(input.value);
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      activeIndex = Math.min(activeIndex + 1, currentFiltered.length - 1);
+      render(input.value);
+    } else if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      activeIndex = Math.max(activeIndex - 1, 0);
+      render(input.value);
+    } else if(e.key === 'Enter'){
+      if(currentFiltered[activeIndex]){ currentFiltered[activeIndex].action(); closePalette(); }
+    }
+  });
+
+  list.addEventListener('click', (e) => {
+    const li = e.target.closest('li');
+    if(!li) return;
+    const idx = parseInt(li.dataset.idx, 10);
+    if(currentFiltered[idx]){ currentFiltered[idx].action(); closePalette(); }
+  });
+})();
+</script>
+</body>
+</html>
